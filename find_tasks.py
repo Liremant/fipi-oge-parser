@@ -40,4 +40,15 @@ def find_themes(soup):
 def find_type_answer(soup):
     tanswer = soup.find_all
 
-#<tr><td class="param-name">КЭС:</td><td class="param-row"><div>1 МЕХАНИЧЕСКИЕ ЯВЛЕНИЯ</div></td></tr> <tr><td class="param-name">Тип ответа:</td><td>Установление соответствия</td></tr>                                      </tbody></table>
+def parse_response_types(soup):
+    response_types = []
+    task_info_panels = soup.find_all('div', class_='task-info-panel')
+    for panel in task_info_panels:
+        table = panel.find('div', class_='task-info-content').find('table')
+        for row in table.find_all('tr'):
+            cells = row.find_all('td')
+            if len(cells) == 2 and cells[0].get_text(strip=True) == 'Тип ответа:':
+                response_type = cells[1].get_text(strip=True)
+                response_types.append(response_type)
+                break
+    return response_types
