@@ -195,3 +195,6 @@ cython_debug/
 source_frame.html
 *.pem 
 # cert file
+w
+tasks.db
+images/*
