@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-def get_source(url):
+def get_src(url):
     chrome_options = Options()
     chrome_options.add_experimental_option("detach", True)
     driver = webdriver.Chrome(options=chrome_options)
@@ -11,10 +11,12 @@ def get_source(url):
         with open("source_frame.html", "w") as f:
             source = driver.page_source
             f.write(source)
+            print('source saved')
             return source
-
+            
 
     except Exception as e:
+        print('error!')
         return e
 def get_url():
     #source = int(input('Paste here link to FIPI with task list'))
