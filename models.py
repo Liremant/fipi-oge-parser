@@ -1,7 +1,7 @@
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy import  create_engine, Column, Integer, String, Text, DateTime, func
+engine = create_engine("sqlite:///tasks.db",echo=False)
 
-engine = create_engine("sqlite:///tasks.db",echo=True)
 
 class Base(DeclarativeBase): 
     pass
